@@ -30,6 +30,7 @@ body {
 }
 
 .container nav ul li a {
+    color: #fff;
     font-size: 18px;
     text-decoration: none;
     transition: 0.25s;
@@ -56,6 +57,10 @@ body {
     display: block;
     margin-left: 100px;
     letter-spacing: 1px;
+}
+
+.description h2, .description p{
+    color: #fff;
 }
 
 .description h2 {
@@ -289,7 +294,10 @@ body {
     }
 
     .container nav ul li a {
-        font-size: 14px;
+        color: #fff;
+        font-size: 18px;
+        text-decoration: none;
+        transition: 0.25s;
     }
 
     .logo {

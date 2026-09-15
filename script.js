@@ -1,3 +1,4 @@
+//Save the selected can + colors to localStorage, then apply them
 function SaveStyle(imgPepsi, bgcolor, fontColor) {
 
     const Style = {
@@ -14,21 +15,21 @@ function SaveStyle(imgPepsi, bgcolor, fontColor) {
 
 }
 
+// Read saved style, build a <style> tag for body bg/text colors, re-add active class
 function loadStyle() {
 
-    if (localStorage.style !== null) {
+    if (localStorage.style) {
         const style = JSON.parse(localStorage.style);
 
         styletag = document.createElement("style")
-
-        console.log(style.bgcolor)
 
         styletag.textContent = `
                     body{
                         background-color: ${style.bgcolor}
                     }
-                    body *{
+                    .description h2, .description p, .container nav ul li a{
                         color: ${style.fontColor}
+                    }
                     
                 `
 
@@ -48,6 +49,7 @@ function loadStyle() {
 
 loadStyle()
 
+//Toggle active so only the clicked Pepsi can is highlighted
 function addActive(id) {
     imgsAllowed = ["pepsi1", "pepsi2", "pepsi1"];
 
