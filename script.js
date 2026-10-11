@@ -17,13 +17,22 @@ function SaveStyle(imgPepsi, bgcolor, fontColor) {
 
 // Read saved style, build a <style> tag for body bg/text colors, re-add active class
 function loadStyle() {
+    let style;
 
     if (localStorage.style) {
-        const style = JSON.parse(localStorage.style);
+        style = JSON.parse(localStorage.style);
+    } else {
+        console.log("vide")
+        style = {
+            imgPepsi: "pepsi1",
+            bgcolor: "#0062BE",
+            fontColor: "#fff"
+        };
+    }
 
-        styletag = document.createElement("style")
+    styletag = document.createElement("style")
 
-        styletag.textContent = `
+    styletag.textContent = `
                     body{
                         background-color: ${style.bgcolor}
                     }
@@ -33,32 +42,21 @@ function loadStyle() {
                     
                 `
 
-        document.head.appendChild(styletag)
+    document.head.appendChild(styletag)
 
-        document.getElementById(`${style.imgPepsi}`).classList.add("active")
-
-
-    } else {
-        const defaultStyle = {
-            imgPepsi: "pepsi1",
-            bgcolor: "#0063A3",
-            fontColor: "#fff"
-        };
-    }
+    document.getElementById(`${style.imgPepsi}`).classList.add("active")
 }
 
 loadStyle()
 
 //Toggle active so only the clicked Pepsi can is highlighted
-function addActive(id) {
+function addActive(idImgClicked) {
     imgsAllowed = ["pepsi1", "pepsi2", "pepsi1"];
 
-    imgClicked = document.getElementById(id)
-    const imgPepsi = document.querySelectorAll(`.pepsi-img img`)
+    const imgsPepsi = document.querySelectorAll(`.pepsi-img img`)
 
-    imgPepsi.forEach(e => {
-
-        (imgClicked.id === e.id)
+    imgsPepsi.forEach(e => {
+        (idImgClicked === e.id)
             ? e.classList.add("active")
             : e.classList.remove("active");
     });
